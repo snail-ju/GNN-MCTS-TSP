@@ -1,0 +1,59 @@
+{
+  "name": "SE-GNN",
+  "n_gpu": 1,
+  "arch": {
+    "type": "TSPModel",
+    "args": {
+      "node_dim": 6,
+      "edge_dim": 4,
+      "embed_dim": 128,
+      "conv_dim": 128,
+      "layer": 3,
+      "graph_size": 20
+    }
+  },
+  "data_loader": {
+    "type": "TSPDataLoader",
+    "data": {
+      "graph_type": "random",
+      "knn": 10,
+      "save_dir": "dataset/",
+      "graph_num": 1000
+    },
+    "args": {
+      "batch_size": 512,
+      "shuffle": true,
+      "validation_split": 0.1,
+      "num_workers": 8
+    }
+  },
+  "optimizer": {
+    "type": "Adam",
+    "args": {
+      "lr": 0.001,
+      "weight_decay": 0,
+      "amsgrad": true
+    }
+  },
+  "loss": "nll_loss",
+  "metrics": [
+    "accuracy",
+    "top_k_acc"
+  ],
+  "lr_scheduler": {
+    "type": "StepLR",
+    "args": {
+      "step_size": 15,
+      "gamma": 0.1
+    }
+  },
+  "trainer": {
+    "epochs": 60,
+    "save_dir": "saved/",
+    "save_period": 1,
+    "verbosity": 2,
+    "monitor": "min val_loss",
+    "early_stop": 15,
+    "tensorboard": true
+  }
+}

@@ -1,0 +1,1 @@
+python main.py --gpu-ids 0 --n-playout 800 --q-init 5 --n-paralle 32 --graph-type random --graph-size 20 --n-worker 1
