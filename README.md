@@ -1,9 +1,8 @@
 # GNN-MCTS-TSP
+
 Implementation of "A Graph Neural Network Assisted Monte Carlo Tree Search Approach to Traveling Salesman Problem" (https://ieeexplore.ieee.org/document/9109309)
 
-
-
-![image-20200618110541615](/Users/xingzhihao/Library/Application Support/typora-user-images/image-20200618110541615.png)
+![overview](https://s1.ax1x.com/2020/06/29/NhAQ2j.png)
 
 # 1. Build
 
@@ -52,44 +51,35 @@ gcc portgen.c -o prorgen -lm
 gcc portcgen.c -o prorgen -lm
 ~~~
 
-**Here is the link to the dataset that was used in the paper**:
-
-https://www.dropbox.com/sh/r39596h8e26nhsp/AADRm5mb82xn7h3BB4KXgETsa?dl=0
-
 ## Training SE-GNN on synthetic data
 
-Please modify the corresponding options in the "config.json" file.
+Please modify the corresponding options in the "segnn/config.json" file.
 
-~~~json
-
-~~~
-
-
+Navigate to the segnn folder and train the SE-GNN with the following instructions, 
 
 ```bash
+cd segnn
 python train.py -c config.json
 ```
 
-By default it will save all the model files in "saved/models/TSP-SE-GNN", the logs under "saved/log/TSP-SE-GNN".
+By default it will save all the model files in "saved/models/SE-GNN", the logs under "saved/log/SE-GNN".
 
-### Test the performance
+### Test the GNN-MCTS
 
-Navigate to the MVC folder and run the evaluation script. Modify the script to change the parameters. Make sure the parameters are consistent with your training script. 
+Navigate to the gnn-mcts folder and run the evaluation script. Modify the script to change the parameters. Make sure the parameters are consistent with your training script. 
 
-    cd code/s2v_mvc
-    ./run_eval.sh
+```bash
+cd gnn-mcts
+./run.sh
+```
 
-The above script will load the 1000 test graphs you generated before, and output the solution in a csv file, under the same results folder. Format of the csv for MVC:
-
-    cover size, cover_size a_1 a_2 a_3 ...., time in seconds
-    
-    Here the second column shows a solution found by S2V-DQN, in the same order of how each node is picked. 
+The above script will load the 1000 test instances you generated before, and output the solution in some text files under the result folder. 
 
 # Reproducing the results that reported in the paper
 
 Here is the link to the dataset that was used in the paper:
 
-https://www.dropbox.com/sh/r39596h8e26nhsp/AADRm5mb82xn7h3BB4KXgETsa?dl=0
+https://www.dropbox.com/sh/4o0tc5aoamat7hy/AABzIz-bOgSLp9_da5GQmjKGa?dl=0
 
 
 # Reference
