@@ -2,7 +2,7 @@
 
 Implementation of "A Graph Neural Network Assisted Monte Carlo Tree Search Approach to Traveling Salesman Problem" (https://ieeexplore.ieee.org/document/9109309)
 
-![overview](https://s1.ax1x.com/2020/06/29/NhAQ2j.png)
+![overview](https://s1.ax1x.com/2020/06/29/NhmkH1.png)
 
 # 1. Build
 
